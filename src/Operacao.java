@@ -12,10 +12,10 @@ import java.util.Date;
 public abstract class Operacao {
 
     /* Data de realização da operação */
-    private Date data;
+    private final Date data;
 
     /* Tipo da operação */
-    private char tipo;
+    protected char tipo;
 
     /* Valor da operação */
     private double valor;
@@ -70,4 +70,6 @@ public abstract class Operacao {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    public abstract double calculaTaxas();
 }

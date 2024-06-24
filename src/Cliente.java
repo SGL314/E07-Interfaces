@@ -43,4 +43,5 @@ public abstract class Cliente {
     public void setData(Date data) {
         this.data = data;
     }
+    public abstract double calculaTaxas();
 }

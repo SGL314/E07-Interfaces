@@ -1,4 +1,4 @@
-public class OperacaoSaque extends Operacao {
+public class OperacaoSaque extends Operacao implements ITaxas{
 
     public OperacaoSaque(double valor) {
         super('s', valor);
@@ -6,5 +6,9 @@ public class OperacaoSaque extends Operacao {
     @Override
     public String toString(){
         return this.getTipo()+"\n"+this.getData()+"\n"+this.getValor();
+    }
+    @Override
+    public double calculaTaxas() {
+        return 0.05;
     }
 }

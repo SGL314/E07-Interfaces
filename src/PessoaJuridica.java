@@ -53,5 +53,8 @@ public class PessoaJuridica extends Cliente {
     public void setSetor(String setor) {
         this.setor = setor;
     }
+    public double calculaTaxas(){
+        return 20;
+    }
 }
 

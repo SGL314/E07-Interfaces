@@ -1,4 +1,4 @@
-public class ContaUniversitaria extends Conta {
+public class ContaUniversitaria extends Conta implements ITaxas{
     public ContaUniversitaria(int numero, Cliente dono, double saldo, double limite){
         super(numero,dono,saldo,limite);
         this.setLimite(limite);
@@ -10,6 +10,10 @@ public class ContaUniversitaria extends Conta {
         if (limite > 500)
             limite = 500;
         this.limite = limite;
+    }
+    @Override
+    public double calculaTaxas(){
+        return 0;
     }
 }
 

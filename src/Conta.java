@@ -1,8 +1,8 @@
-public abstract class Conta {
+public abstract class Conta implements ITaxas{
 
     private int numero;
 
-    private Cliente dono;
+    protected Cliente dono;
 
     private double saldo;
 
@@ -12,6 +12,7 @@ public abstract class Conta {
 
     private int proximaOperacao;
 
+                                        
     private static int totalContas = 0;
 
     public Conta(int numero, Cliente dono, double saldo, double limite) {
@@ -54,6 +55,7 @@ public abstract class Conta {
         return false;
     }
 
+                                        
     public void depositar(double valor) {
         this.saldo += valor;
 
@@ -73,6 +75,7 @@ public abstract class Conta {
     public void imprimir() {
         System.out.println("===== Conta " + this.numero + " =====");
         this.dono.imprimir();
+                                        
         System.out.println("Saldo: " + this.saldo);
         System.out.println("Limite: " + this.limite);
         System.out.println("====================");
@@ -116,5 +119,30 @@ public abstract class Conta {
         this.dono = dono;
     }
 
+    public void imprimirExtratoTaxas(){
+        System.out.println("=== Extrato de Taxas ===\n");
+        double soma = 0;
+        System.out.println("Manutenção: "+this.calculaTaxas()+"\n");
+        soma += this.calculaTaxas();
+        if (this.operacoes.length >= 1){
+            System.out.println("Operações");
+            for (Operacao opr : operacoes){
+                if (opr == null) break;
+                if (opr.tipo == 's'){
+                    System.out.println("Saque: "+opr.calculaTaxas());
+                    soma += opr.calculaTaxas();
+                }else if (opr.tipo == 'd'){
+                    System.out.println("Depósito: "+opr.calculaTaxas());
+                    soma += opr.calculaTaxas();
+                }
+            }
+        }else{
+            System.out.println("Nenhuma operação feita");
+        }
+        System.out.println("\nTotal: "+((float) Math.round(soma*100))/100);
+    }
+
     public abstract void setLimite(double limite);
+    // @Override
+    // public abstract double calculaTaxas();
 }

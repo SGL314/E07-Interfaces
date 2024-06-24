@@ -1,4 +1,4 @@
-public class ContaPoupanca extends Conta {
+public class ContaPoupanca extends Conta{
     public ContaPoupanca(int numero, Cliente dono, double saldo, double limite){
         super(numero,dono,saldo,limite);
         this.setLimite(limite);
@@ -10,6 +10,10 @@ public class ContaPoupanca extends Conta {
         if (limite > 1000)
             limite = 1000;
         this.limite = limite;
+    }
+    @Override
+    public double calculaTaxas(){
+        return 0;
     }
 }
 

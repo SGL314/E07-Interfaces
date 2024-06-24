@@ -27,5 +27,9 @@ public class PessoaFisica extends Cliente {
     public boolean autenticar(String chave){
         return this.cpf.equals(chave);
     }
+    @Override
+    public double calculaTaxas(){
+        return 10;
+    }
 
 }

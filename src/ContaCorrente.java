@@ -1,4 +1,5 @@
-public class ContaCorrente extends Conta {
+
+public class ContaCorrente extends Conta{
     public ContaCorrente(int numero, Cliente dono, double saldo, double limite){
         super(numero,dono,saldo,limite);
         this.setLimite(limite);
@@ -8,6 +9,10 @@ public class ContaCorrente extends Conta {
         if (limite < -100)
             limite = -100;
         this.limite = limite;
+    }
+    @Override
+    public double calculaTaxas(){
+        return this.dono.calculaTaxas();
     }
 }
 
